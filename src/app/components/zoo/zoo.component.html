@@ -1,0 +1,23 @@
+<div class="container">
+<input #input/>
+
+<select #select>
+  <option value="kangaroo">Kangaroo</option>
+  <option value="koala">Koala</option>
+  <option value="gorilla">Gorilla</option>
+  <option value="peacock">Peacock</option>
+</select>
+
+<button (click)="addAnimal(input.value, select.value)">Add Animal</button> 
+</div>
+
+<div class="zoo">
+<div *ngFor="let type of types" class="border">
+  <ng-container *ngFor="let animal of animals$ | async">
+    <ng-container *ngIf="animal.animalType === type" >
+      {{animal.name}}
+      <img src="/assets/{{animal.animalType}}.jpg"/>
+    </ng-container>
+  </ng-container>
+</div>
+</div>
